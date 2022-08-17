@@ -2,21 +2,17 @@ import BuildHelper._
 
 inThisBuild(
   List(
-    organization := "dev.zio",
+    organization := "nohall.caesars.foss",
     homepage := Some(url("https://zio.github.io/car-registration/")),
     licenses := List("Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0")),
     developers := List(
       Developer(
-        "jdegoes",
-        "John De Goes",
-        "john@degoes.net",
-        url("http://degoes.net")
+        "nohallcaesars",
+        "sraseacllahon",
+        "spam@gmail.com",
+        url("https://github.com/nohallcaesars/zio2/tree/main/car-registration/car-registration)
       )
-    ),
-    pgpPassphrase := sys.env.get("PGP_PASSWORD").map(_.toArray),
-    pgpPublicRing := file("/tmp/public.asc"),
-    pgpSecretRing := file("/tmp/secret.asc")
-  )
+    )
 )
 
 addCommandAlias("fmt", "all scalafmtSbt scalafmt test:scalafmt")

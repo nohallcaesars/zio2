@@ -1,11 +1,11 @@
-package car.registration
+package nohall.caesars.foss.car.registration
 
 import java.io.IOException
 
 import zio.console._
 import zio.{ App, ExitCode, URIO, ZIO }
 
-object HelloWorld extends App {
+object CarRegistration extends App {
 
   override def run(args: List[String]): URIO[Console, ExitCode] =
     myAppLogic.exitCode
