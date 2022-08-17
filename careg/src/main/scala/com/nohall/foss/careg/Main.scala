@@ -5,7 +5,6 @@ package com.nohall.foss.careg
 //import zhttp.service._
 //import zhttp.service.server.ServerChannelFactory
 import zio._
-import zio.Console._
 //import zio.config._
 //import zio.stream._
 //import com.nohall.foss.careg.api._
@@ -39,8 +38,8 @@ import zio.Console._
 object Careg extends ZIOAppDefault {
   def run =
     for {
-      _ <- printLine("Hello! What is your name?")
-      n <- readLine
-      _ <- printLine("Hello, " + n + ", good to meet you!")
+      _ <- Console.printLine("Hello! What is your name?")
+      n <- Console.readLine
+      _ <- Console.printLine("Hello, " + n + ", good to meet you!")
     } yield ()
 }
