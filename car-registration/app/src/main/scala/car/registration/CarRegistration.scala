@@ -1,4 +1,4 @@
-package nohall.caesars.foss.car.registration
+package com.nohall.foss.car.registration
 
 import java.io.IOException
 
