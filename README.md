@@ -10,6 +10,7 @@ random zio 2 blog posts developed in zio 1
   - [scala releases](https://www.scala-lang.org/download/all.html)
 - examples
   - [zio projects](https://zio.dev/version-1.x/resources/learning/sampleprojects/)
+  - [zio webservice quickstart](https://github.com/zio/zio-quickstart-restful-webservice)
 
 
 ## reusable boilerplates

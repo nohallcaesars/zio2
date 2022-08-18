@@ -1,58 +1,26 @@
-// static
-val appName = "boilerplate-be"
+import Dependencies._
 
-// deps
-val zioVersion                 = "1.0.16"
-val zioHttpVersion             = "2.0.0-RC10"
-val zioJsonVersion             = "0.3.0-RC10"
-val logbackVersion             = "1.2.11"
-val testcontainersVersion      = "1.17.3"
-val testcontainersScalaVersion = "0.40.8"
-val quillVersion               = "4.0.0"
-val postgresqlVersion          = "42.4.0"
-val zioConfigVersion           = "3.0.1"
-val zioMockVersion             = "1.0.0-RC8"
+// build settings
+ThisBuild / organization := s"com.nohall.foss.boilerplate"
+ThisBuild / version      := "0.0.1"
+ThisBuild / scalaVersion := "2.13.8"
+ThisBuild / resolvers ++= Resolver.sonatypeOssRepos("snapshots")
 
+// main project
 lazy val root = (project in file("."))
-  .settings(
-    inThisBuild(
-      List(
-        name         := "careg",
-        organization := s"com.nohall.foss.$appName",
-        version      := "0.0.1",
-        scalaVersion := "2.13.8",
-      )
-    ),
-    name := appName,
-    libraryDependencies ++= Seq(
-      "io.getquill" %% "quill-jdbc" % quillVersion excludeAll (
-        ExclusionRule(organization = "org.scala-lang.modules")
-      ),
-      "io.getquill" %% "quill-jdbc-zio" % quillVersion excludeAll (
-        ExclusionRule(organization = "org.scala-lang.modules")
-      ),
-      "io.getquill" %% "quill-jasync-postgres" % quillVersion excludeAll (
-        ExclusionRule(organization = "org.scala-lang.modules")
-      ),
-      "org.postgresql"     % "postgresql"                      % postgresqlVersion,
-      "dev.zio"           %% "zio"                             % zioVersion,
-      "dev.zio"           %% "zio-streams"                     % zioVersion,
-      "io.d11"            %% "zhttp"                           % zioHttpVersion,
-      "dev.zio"           %% "zio-config"                      % zioConfigVersion,
-      "dev.zio"           %% "zio-config-typesafe"             % zioConfigVersion,
-      "ch.qos.logback"     % "logback-classic"                 % logbackVersion,
-      "dev.zio"           %% "zio-json"                        % zioJsonVersion,
-      "dev.zio"           %% "zio-test"                        % zioVersion                 % Test,
-      "dev.zio"           %% "zio-test-sbt"                    % zioVersion                 % Test,
-      "dev.zio"           %% "zio-test-junit"                  % zioVersion                 % Test,
-      "dev.zio"           %% "zio-mock"                        % zioMockVersion             % Test,
-      "com.dimafeng"      %% "testcontainers-scala-postgresql" % testcontainersScalaVersion % Test,
-      "org.testcontainers" % "testcontainers"                  % testcontainersVersion      % Test,
-      "org.testcontainers" % "database-commons"                % testcontainersVersion      % Test,
-      "org.testcontainers" % "postgresql"                      % testcontainersVersion      % Test,
-      "org.testcontainers" % "jdbc"                            % testcontainersVersion      % Test,
-      "dev.zio"           %% "zio-test-magnolia"               % zioVersion                 % Test,
-    ),
-    testFrameworks := Seq(new TestFramework("zio.test.sbt.ZTestFramework")),
-  )
+//  .aggregate(beCore) // replay cmds
+//  .dependsOn(beCore) // required subprojects
   .enablePlugins(JavaAppPackaging)
+  .settings(
+    name := "BoilerplateBE",
+    libraryDependencies ++= commonDeps,
+//    testFrameworks := Seq(new TestFramework("zio.test.sbt.ZTestFramework")),
+  )
+
+// additional services
+// @see https://github.com/pbassiner/sbt-multi-project-example
+//lazy val beCore = (project in file("core"))
+//  .settings(
+//    name := "BE Core",
+//    libraryDependencies ++= Seq(zio, zioZmx),
+//  )
