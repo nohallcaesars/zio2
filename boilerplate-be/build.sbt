@@ -8,13 +8,13 @@ ThisBuild / resolvers ++= Resolver.sonatypeOssRepos("snapshots")
 
 // main project
 lazy val root = (project in file("."))
-//  .aggregate(beCore) // replay cmds
-//  .dependsOn(beCore) // required subprojects
+  //  .aggregate(beCore) // replay cmds
+  //  .dependsOn(beCore) // required subprojects
   .enablePlugins(JavaAppPackaging)
   .settings(
     name := "BoilerplateBE",
     libraryDependencies ++= commonDeps,
-//    testFrameworks := Seq(new TestFramework("zio.test.sbt.ZTestFramework")),
+    //    testFrameworks := Seq(new TestFramework("zio.test.sbt.ZTestFramework")),
   )
 
 // additional services
