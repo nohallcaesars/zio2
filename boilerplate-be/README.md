@@ -5,3 +5,12 @@
 
 ## links
 
+## figuring out the stack
+
+### http
+
+- sttp stack
+  - [sttp client](https://sttp.softwaremill.com/en/latest/)
+  - [sttp tapir endpoint descriptions](https://github.com/softwaremill/tapir)
+  - [sttp HTTP definitions](https://github.com/softwaremill/sttp-model)
+  - [sttp oauth2](https://github.com/ocadotechnology/sttp-oauth2)
