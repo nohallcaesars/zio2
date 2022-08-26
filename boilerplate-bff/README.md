@@ -11,6 +11,8 @@ based on dream11s g8 template
 
 - zio http
   - [zio http](https://dream11.github.io/zio-http/)
-- sttp + http4s
+- sttp + others
   - [sttp](https://sttp.softwaremill.com/en/latest/)
   - [http4s](https://http4s.org/)
+    - [a blog post](https://timpigden.github.io/_pages/zio-http4s/intro.html)
+  - [armeria](https://armeria.dev/)
