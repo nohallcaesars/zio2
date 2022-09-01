@@ -5,6 +5,9 @@ package com.nohall.foss.boilerplate.client
 import sttp.client3._
 
 final object SimpleClient {
+
+  /** sends a synchronous request, using the default JVM backend
+    */
   private val backend = HttpClientSyncBackend()
 
   def request(uri: String = "https://api.coindesk.com/v1/bpi/currentprice.json") =
