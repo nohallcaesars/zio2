@@ -1,0 +1,7 @@
+-Xms1G
+-Xmx4G
+-Xss2M
+-XX:MaxMetaspaceSize=1G
+-XX:NewSize=1G
+-XX:+UseG1GC
+-XX:+UseStringDeduplication

@@ -5,6 +5,7 @@ ThisBuild / organization := s"com.nohall.foss.boilerplate"
 ThisBuild / version      := "0.0.1"
 ThisBuild / scalaVersion := "2.13.8"
 ThisBuild / resolvers ++= Resolver.sonatypeOssRepos("snapshots")
+Compile / run / fork := true // forks sbt on run/runMain so ~run works as expected
 
 // main project
 lazy val root = (project in file("."))

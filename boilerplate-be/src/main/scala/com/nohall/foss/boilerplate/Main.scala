@@ -12,10 +12,7 @@ object Boilerplate extends App {
 
   def program: ZIO[ZEnv, IOException, Unit] =
     for {
-      _ <- putStrLn("what is your name?")
-      n <- getStrLn
-      _ <- putStrLn("Hello, " + n + ", good to meet you!")
-      response = SimpleClient.request()
-      _ <- putStrLn(response.toString())
+      response <- SimpleClient.request()
+      _        <- putStrLn(response)
     } yield ()
 }
