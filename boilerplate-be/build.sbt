@@ -3,6 +3,7 @@
 
 import Dependencies._
 
+// force reload on any changes to sbt build files
 Global / onChangedBuildSource := ReloadOnSourceChanges
 
 // ThisBuild settings take lower precedence,
@@ -39,4 +40,18 @@ def newProject(projectName: String, base: File): Project =
   Project(projectName, base).settings(
     name          := projectName,
     onLoadMessage := s"$projectName has been loaded",
+    // @see https://docs.scala-lang.org/overviews/compiler-options/index.html
+    scalacOptions ++= Seq(
+      "-encoding",
+      "utf8",
+      "-Ymacro-annotations",
+      "-deprecation",
+      "-explaintypes",
+      "-feature",
+      "-language:experimental.macros",
+      "-opt:allow-skip-class-loading",
+      "-Xcheckinit",
+//      "-Xdev",
+      "-Xlint",
+    ),
   )

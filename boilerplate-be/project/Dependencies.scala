@@ -17,21 +17,25 @@ object Dependencies {
   lazy val sttpSharedV = "1.3.7"
   lazy val sttpOauthV  = "0.15.0"
 
-  val zio               = "dev.zio"                       %% "zio"            % zioV
-  val zioJson           = "dev.zio"                       %% "zio-json"       % zioJsonV
-  val zioQuill          = "io.getquill"                   %% "quill-jdbc-zio" % zioQuillV
-  val sttpClient        = "com.softwaremill.sttp.client3" %% "core"           % sttpClientV
-  val sttpClientBackend = "com.softwaremill.sttp.client3" %% "zio1"           % sttpClientV
-  val sttpTapir         = "com.softwaremill.sttp.tapir"   %% "tapir-core"     % sttpTapirV
-  val sttpModel         = "com.softwaremill.sttp.model"   %% "core"           % sttpModelV
-  val sttpShared        = "com.softwaremill.sttp.shared"  %% "core"           % sttpSharedV
-  val sttpOauth         = "com.ocadotechnology"           %% "sttp-oauth2"    % sttpOauthV
+//  lazy val tapirZioJson      = "com.softwaremill.sttp.tapir"   %% "tapir-json-zio" % "0.18.3"
+  lazy val zio               = "dev.zio"                       %% "zio"             % zioV
+  lazy val zioJson           = "dev.zio"                       %% "zio-json"        % zioJsonV
+  lazy val zioJsonMacros     = "dev.zio"                       %% "zio-json-macros" % zioJsonV
+  lazy val zioQuill          = "io.getquill"                   %% "quill-jdbc-zio"  % zioQuillV
+  lazy val sttpClient        = "com.softwaremill.sttp.client3" %% "core"            % sttpClientV
+  lazy val sttpClientBackend = "com.softwaremill.sttp.client3" %% "zio1"            % sttpClientV
+  lazy val sttpTapir         = "com.softwaremill.sttp.tapir"   %% "tapir-core"      % sttpTapirV
+  lazy val sttpModel         = "com.softwaremill.sttp.model"   %% "core"            % sttpModelV
+  lazy val sttpShared        = "com.softwaremill.sttp.shared"  %% "core"            % sttpSharedV
+  lazy val sttpOauth         = "com.ocadotechnology"           %% "sttp-oauth2"     % sttpOauthV
   // @see https://stackoverflow.com/questions/29311341/sbt-cannot-append-seqobject-to-seqmoduleid
 //  val postgres = "org.postgresql" %% "postgresql"     % postgresV
 
-  val commonDeps = Seq(
+  lazy val commonDeps = Seq(
     zio,
     zioJson,
+    zioJsonMacros,
+//    tapirZioJson,
     sttpClient,
     sttpClientBackend,
     sttpTapir,

@@ -1,14 +1,34 @@
 package com.nohall.foss.boilerplate.json
 
 // @see https://github.com/zio/zio-json#documentation
+// @see https://github.com/softwaremill/tapir/blob/master/examples/src/main/scala/sttp/tapir/examples/client/Http4sClientExample.scala
+// @see https://zio.dev/guides/tutorials/encode-and-decode-json-data/
 
+//import sttp.tapir.json.zio._
 import zio.json._
 
-final case class CoindeskJson()
+@jsonDerive case class Time(
+    updated: String,
+    updatedISO: String,
+    updateduk: String)
 
-final object CoindeskJson {
-  implicit val decoder: JsonDecoder[CoindeskJson] = DeriveJsonDecoder.gen[CoindeskJson]
-}
+@jsonDerive case class Currencies(
+    code: String,
+    symbol: String,
+    rate: String,
+    description: String,
+    rate_float: Float)
+
+@jsonDerive case class BPI(
+    USD: Currencies,
+    GBP: Currencies,
+    EUR: Currencies)
+
+@jsonDerive case class Coindesk(
+    time: Time,
+    disclaimer: String,
+    chartName: String,
+    bpi: BPI)
 
 /*
 Response(

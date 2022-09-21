@@ -12,7 +12,7 @@ object Boilerplate extends App {
 
   def makeRequest =
     for {
-      _ <- SimpleClient.request() >>= (resp => putStrLn(resp))
+      _ <- SimpleClient.request() >>= (resp => putStrLn(resp.toString))
     } yield ()
 
   def program: ZIO[ZEnv, IOException, Unit] =

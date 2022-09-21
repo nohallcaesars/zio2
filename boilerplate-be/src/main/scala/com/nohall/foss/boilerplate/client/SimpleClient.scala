@@ -3,11 +3,13 @@ package com.nohall.foss.boilerplate.client
 // @see https://sttp.softwaremill.com/en/latest/quickstart.html
 // @see coinranking api: https://developers.coinranking.com/api
 
+import com.nohall.foss.boilerplate.json._
 import sttp.client3._
 import zio.random._
-import zio.{ URIO, ZIO, random }
+import zio._
+import zio.json._
 
-final object SimpleClient {
+object SimpleClient {
 
   /** sends a synchronous request, using the default JVM backend
     */
@@ -16,23 +18,28 @@ final object SimpleClient {
     if (good) "https://api.coindesk.com/v1/bpi/currentprice.json"
     else "https://api.coindesk.com/zzz"
 
-  def request(): URIO[Random, String] =
+  def request(): URIO[Random, Serializable] =
     for {
       bool <- random.nextBoolean
       _    <- ZIO.succeed(println(s"using real url? $bool"))
-      result <- ZIO
+      decoded <- ZIO
         .effectTotal(
           basicRequest
-            .get(uri"${url(bool)}")
+            .get(uri"${url(true)}")
             .send(backend)
         ) >>= (resp =>
-        ZIO
-          .fromEither(resp.body)
-          .fold(
-            _ => s" failed: ${resp.code}",
-            s => s,
-          )
+        ZIO.succeed(resp.code.toString match {
+          case "404" => JsonDecoder[String].decodeJson(raw""""failed: ${resp.code}"""")
+          case _ =>
+            println(resp.body)
+            raw"""${resp.body.merge}""".stripMargin.fromJson[Coindesk]
+        })
       )
-    } yield result
+      _ <- ZIO.succeed(println("printing decoded")) *> ZIO.succeed(println(decoded))
+//      result = decoded.fold(
+//        l => l,
+//        r => r.toString,
+//      )
+    } yield decoded.merge
 
 }
