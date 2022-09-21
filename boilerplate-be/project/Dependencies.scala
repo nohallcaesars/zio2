@@ -1,7 +1,9 @@
 // @see https://github.com/dream11/zio-http/blob/main/project/Dependencies.scala
 // @see https://www.scala-sbt.org/1.x/docs/Organizing-Build.html
+// @see https://github.com/sbt/sbt/blob/1.7.x/project/Dependencies.scala
 
 import sbt._
+//import Keys._
 
 // make sure to check the fkn releases support your scala version
 object Dependencies {

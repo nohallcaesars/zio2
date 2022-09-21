@@ -10,9 +10,13 @@ import java.io.IOException
 object Boilerplate extends App {
   final def run(args: List[String]): URIO[ZEnv, ExitCode] = program.exitCode
 
+  def makeRequest =
+    for {
+      _ <- SimpleClient.request() >>= (resp => putStrLn(resp))
+    } yield ()
+
   def program: ZIO[ZEnv, IOException, Unit] =
     for {
-      response <- SimpleClient.request()
-      _        <- putStrLn(response)
+      _ <- makeRequest
     } yield ()
 }
