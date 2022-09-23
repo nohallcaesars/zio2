@@ -18,20 +18,26 @@ object Dependencies {
   lazy val sttpOauthV  = "0.15.0"
 
 //  lazy val tapirZioJson      = "com.softwaremill.sttp.tapir"   %% "tapir-json-zio" % "0.18.3"
-  lazy val zio               = "dev.zio"                       %% "zio"             % zioV
-  lazy val zioJson           = "dev.zio"                       %% "zio-json"        % zioJsonV
-  lazy val zioJsonMacros     = "dev.zio"                       %% "zio-json-macros" % zioJsonV
-  lazy val zioQuill          = "io.getquill"                   %% "quill-jdbc-zio"  % zioQuillV
-  lazy val sttpClient        = "com.softwaremill.sttp.client3" %% "core"            % sttpClientV
-  lazy val sttpClientBackend = "com.softwaremill.sttp.client3" %% "zio1"            % sttpClientV
-  lazy val sttpTapir         = "com.softwaremill.sttp.tapir"   %% "tapir-core"      % sttpTapirV
-  lazy val sttpModel         = "com.softwaremill.sttp.model"   %% "core"            % sttpModelV
-  lazy val sttpShared        = "com.softwaremill.sttp.shared"  %% "core"            % sttpSharedV
-  lazy val sttpOauth         = "com.ocadotechnology"           %% "sttp-oauth2"     % sttpOauthV
+  lazy val retrofit2             = "com.squareup.retrofit2" % "retrofit"        % "2.10.0-SNAPSHOT"
+  lazy val retrofit2ScalaAdapter = "com.squareup.retrofit2" % "adapter-scala"   % "2.10.0-SNAPSHOT"
+  lazy val coingeckJava          = "com.github.philipinho"  % "CoinGecko-Java"  % "master-SNAPSHOT"
+  lazy val zio                   = "dev.zio"               %% "zio"             % zioV
+  lazy val zioJson               = "dev.zio"               %% "zio-json"        % zioJsonV
+  lazy val zioJsonMacros         = "dev.zio"               %% "zio-json-macros" % zioJsonV
+  lazy val zioQuill              = "io.getquill"           %% "quill-jdbc-zio"  % zioQuillV
+  lazy val sttpClient        = "com.softwaremill.sttp.client3" %% "core"        % sttpClientV
+  lazy val sttpClientBackend = "com.softwaremill.sttp.client3" %% "zio1"        % sttpClientV
+  lazy val sttpTapir         = "com.softwaremill.sttp.tapir"   %% "tapir-core"  % sttpTapirV
+  lazy val sttpModel         = "com.softwaremill.sttp.model"   %% "core"        % sttpModelV
+  lazy val sttpShared        = "com.softwaremill.sttp.shared"  %% "core"        % sttpSharedV
+  lazy val sttpOauth         = "com.ocadotechnology"           %% "sttp-oauth2" % sttpOauthV
   // @see https://stackoverflow.com/questions/29311341/sbt-cannot-append-seqobject-to-seqmoduleid
 //  val postgres = "org.postgresql" %% "postgresql"     % postgresV
 
   lazy val commonDeps = Seq(
+    retrofit2,
+    retrofit2ScalaAdapter,
+    coingeckJava,
     zio,
     zioJson,
     zioJsonMacros,

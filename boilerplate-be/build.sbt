@@ -19,6 +19,7 @@ ThisBuild / developers := List(
 )
 
 ThisBuild / resolvers ++= Resolver.sonatypeOssRepos("snapshots")
+ThisBuild / resolvers += "jitpack" at "https://jitpack.io"
 
 // testing
 ThisBuild / turbo         := true

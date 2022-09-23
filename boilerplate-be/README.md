@@ -7,6 +7,10 @@
 
 ## figuring out the stack
 
+### resolvers
+
+- [always fkn use jitpack to grab deps from github](https://jitpack.io/#philipinho/CoinGecko-Java)
+
 ### intellij
 
 - [zio-intellij](https://github.com/zio/zio-intellij)
