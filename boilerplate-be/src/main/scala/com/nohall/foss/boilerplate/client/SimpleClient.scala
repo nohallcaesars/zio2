@@ -25,21 +25,14 @@ object SimpleClient {
       decoded <- ZIO
         .effectTotal(
           basicRequest
-            .get(uri"${url(true)}")
+            .get(uri"${url(bool)}")
             .send(backend)
         ) >>= (resp =>
-        ZIO.succeed(resp.code.toString match {
-          case "404" => JsonDecoder[String].decodeJson(raw""""failed: ${resp.code}"""")
-          case _ =>
-            println(resp.body)
-            raw"""${resp.body.merge}""".stripMargin.fromJson[Coindesk]
-        })
+        ZIO.succeed(
+          (if (resp.is200) raw"""${resp.body.merge}""".stripMargin.fromJson[Coindesk]
+           else JsonDecoder[String].decodeJson(raw""""failed: ${resp.code}"""")).merge
+        )
       )
-      _ <- ZIO.succeed(println("printing decoded")) *> ZIO.succeed(println(decoded))
-//      result = decoded.fold(
-//        l => l,
-//        r => r.toString,
-//      )
-    } yield decoded.merge
+    } yield decoded
 
 }
